@@ -1,0 +1,24 @@
+<p>
+  <strong>Nombre Programa:</strong>
+  <%= @program.nombrePrograma %>
+</p>
+ 
+<p>
+  <strong># Modulos:</strong>
+  <%= @program.NumModulo %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @program.description %>
+</p>
+
+<p>
+  <strong>Tutor:</strong>
+  <%=@program.tutor.user.nombre %>
+  <%= link_to 'asignar', programs_tutor_path(@program) %>
+  
+</p>
+ 
+<%= link_to 'Index', programs_path %>
+<td><%= link_to 'Inicio', inicio_index_path %></td><br>

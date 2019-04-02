@@ -1,0 +1,26 @@
+<div class="login">
+  <div class="container">
+    <div class="form">
+
+    <h1>Editar Estudiante</h1>
+
+    
+    <%= form_with url: student_path(current_user), :method => :put do |f|  %>
+    
+    
+     
+    
+      <%= f.text_field :nombre, :placeholder => "Nombre" %><br>
+      <%= f.text_field :apellidop, :placeholder => "Apellido Paterno" %><br>
+      <%= f.text_field :apellidom, :placeholder => "Apellido Materno" %><br>
+      <%= f.email_field :email, :placeholder => "Email" %><br>
+      <%= f.text_field :numeroTelf, :placeholder => "NumeroTelf" %><br>
+      <%= f.password_field :password, :placeholder => "Password" %><br>
+      <%= f.submit "Editar", class: "btn-submit" %>
+    <% end %>
+    <%= link_to 'Back', student_path %>
+
+  
+    </div>
+  </div>
+</div>

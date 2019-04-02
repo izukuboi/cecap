@@ -1,0 +1,34 @@
+<div class="container">
+<div class="form">
+    
+<% if current_user %> 
+<h3>Perfil Estudiante</h3>
+  <ul> 
+    <strong>Nombre:</strong>
+         <%= current_user.nombre %><br>
+
+    <strong>Apellido Paterno:</strong>
+         <%= current_user.apellidop %><br>
+    <strong>Apellido Materno:</strong>
+         <%= current_user.apellidom %><br>
+    <strong>Email:</strong>
+         <%= current_user.email %><br>   
+    <strong>Numero de Telefono:</strong>
+         <%= current_user.numeroTelf %><br>
+         <td><%= link_to 'Editar', edit_student_path(current_user) %></td><br>
+         <td><%= link_to "Log out", logout_path, method: "delete" %></td><br> 
+         <td><%= link_to 'Inicio', inicio_index_path %></td><br>
+
+  </ul> 
+<% else %> 
+  <ul> 
+  <h1> Acceso Denegado</h1>
+    <%= link_to 'Registrar usuario', new_user_path %><br>
+    
+    <%= link_to 'Registrar tutor', new_tutor_path %><br>
+    
+    <%= link_to 'Login', new_session_path %><br>
+  </ul> 
+<% end %>
+    </div>
+    </div>

@@ -1,0 +1,18 @@
+
+ 
+  
+      <%= form_with url: programs_tutor_path do |f|  %>
+
+              <% @tutors.each do |t| %>
+                <tr>
+                  <td><%= t.user.nombre %></td>
+                  <%= check_box_tag(:tutor_id,t.id) %><br>
+                  
+                  
+                  
+                </tr>
+              <% end %>
+              <%= f.submit "asignar", class: "btn-submit" %>
+
+
+    <% end %>

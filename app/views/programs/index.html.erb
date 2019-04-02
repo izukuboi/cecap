@@ -1,0 +1,24 @@
+
+<h1>Programas</h1>
+ 
+<table>
+  <tr>
+      <%= link_to 'Nuevo Programa', new_program_path %>
+    <th>NombrePrograma</th>
+    <th>NumModulos</th>
+    <th></th>
+  </tr>
+ 
+  <% @programs.each do |prog| %>
+    <tr>
+      <td><%= prog.nombrePrograma %></td>
+      <td><%= prog.NumModulo %></td>
+      <td><%= link_to 'Show', program_path(prog) %></td>
+      <td><%= link_to 'Edit', edit_program_path(prog) %></td>
+      <td><%= link_to 'Destroy', program_path(prog),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+<td><%= link_to 'Inicio', inicio_index_path %></td><br>

@@ -1,0 +1,22 @@
+<div class="login">
+  <div class="container">
+    <div class="form">
+
+    <h1>Programas</h1>
+
+
+    
+    <%= form_for(@program) do |f| %>
+     
+    
+      <%= f.text_field :nombrePrograma, :placeholder => "Nombre" %><br>
+      <%= f.text_field :NumModulo, :placeholder => "NumModulo" %><br>
+      <%= f.text_area :description, :placeholder => "Descripcion" %><br>
+
+      <%= f.submit "Registrar", class: "btn-submit" %>
+    <% end %>
+
+  
+    </div>
+  </div>
+</div>

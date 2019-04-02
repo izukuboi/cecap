@@ -1,0 +1,22 @@
+<div class="login">
+  <div class="container">
+    <div class="form">
+
+    <h1>Editar Programas</h1>
+
+
+    
+    <%= form_for(@program) do |f| %>
+     
+    
+      <%= f.text_field :nombrePrograma, :placeholder => "Nombre" %><br>
+      <%= f.text_field :NumModulo, :placeholder => "NumModulo" %><br>
+
+      <%= f.submit "Registrar", class: "btn-submit" %>
+    <% end %>
+    <%= link_to 'Back', programs_path %>
+
+  
+    </div>
+  </div>
+</div>

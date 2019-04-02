@@ -1,0 +1,28 @@
+<div class="body">
+    <h2> Inicio </h2>
+    <%= link_to 'Registrar tutor', new_tutor_path %><br>
+    
+    <%= link_to 'Registrar Estudiante', new_student_path %><br>
+    
+    <%= link_to 'Gestionar Programa', programs_path %><br>
+    
+    <%= link_to 'Login', login_path %><br>
+    
+    <%= link_to 'perfil tutor' , tutor_path(current_user)%><br>
+
+  <tr>
+     <h2> Programas </h2>
+    <th>NombrePrograma</th><br>
+
+    <th></th>
+  </tr>
+ 
+  <% @programs.each do |prog| %>
+    <tr>
+      <td><%= prog.nombrePrograma %></td>
+      <td><%= link_to 'Show', program_path(prog) %></td><br>
+      
+    </tr>
+  <% end %>
+</table>
+</div>
