@@ -1,0 +1,17 @@
+
+
+<div class = "well">
+   <p>Subir archivo para ser revisado</p>
+
+   <%= form_with url: evaluation_grade_evaluations_path(), html: { multipart: true } do |f| %>
+   
+  
+
+
+
+
+      <%= f.label :attachment %><br>
+      <%= f.file_field :attachment %><br>
+      <%= f.submit "Save", class: "btn btn-primary" %>
+   <% end %>
+</div>

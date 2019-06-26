@@ -3,22 +3,33 @@
  
 <table>
   <tr>
+    
+    <% if admin%>
       <%= link_to 'Nuevo Programa', new_program_path %>
-    <th>NombrePrograma</th>
-    <th>NumModulos</th>
-    <th></th>
+
+   
+    <%end%>
   </tr>
- 
+    <th>NombrePrograma</th>
+
+
+    <th>NumCursos</th>
   <% @programs.each do |prog| %>
     <tr>
       <td><%= prog.nombrePrograma %></td>
-      <td><%= prog.NumModulo %></td>
+      
+      <td><%= Course.where(program_id: prog.id).count %></td>
       <td><%= link_to 'Show', program_path(prog) %></td>
+      
+      <% if admin %>
       <td><%= link_to 'Edit', edit_program_path(prog) %></td>
+    
+    
       <td><%= link_to 'Destroy', program_path(prog),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
+      <%end%>
     </tr>
   <% end %>
 </table>
-<td><%= link_to 'Inicio', inicio_index_path %></td><br>
+<td><%= link_to 'Inicio', root_path %></td><br>

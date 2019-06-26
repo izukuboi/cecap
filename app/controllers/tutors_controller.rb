@@ -15,7 +15,8 @@ class TutorsController < ApplicationController
     end
     
     def edit
-        @tutor = Tutor.joins(:user).where('user_id = params[:id]').model
+        #@tutor = Tutor.joins(:user).where('user_id = params[:id]').model
+        @tutor = Tutor.where(user_id: params[:id]).take
     end
     
     def create
@@ -52,7 +53,8 @@ class TutorsController < ApplicationController
     
     
     def show
-        @tutor = Tutor.joins(:user).where('user_id = session[:user_id]')
+        #@tutor = Tutor.joins(:user).where('user_id = session[:user_id]')
+        @tutor = Tutor.where(user_id: session[:user_id]).take
     end    
 
     private

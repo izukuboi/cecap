@@ -1,0 +1,114 @@
+<p>
+  <h1> Curso: <%= @course.name %></h1>
+</p>
+<p>
+  <h2> Descripcion: <%= @course.descripton %></h2>
+</p>
+<% if tutor_user || admin %>
+<td><%=  link_to "new eva", new_course_evaluation_path(@course), class: "btn btn-primary" %></td>
+<td><%=  link_to "new practice", new_course_practice_path(@course), class: "btn btn-primary" %></td>
+<td><%=  link_to "new material", new_course_material_path(@course), class: "btn btn-primary" %></td>
+<% end %>
+<table class = "table table-bordered table-striped">
+    
+<h3>Evaluaciones</h3>
+   <thead>
+      <tr>
+         <th>Nombre</th>
+
+         <th>Contenido</th>
+         
+
+         
+      </tr>
+   </thead>
+   
+   <tbody>
+      <% @evaluations.each do |e| %>
+         
+         <tr>
+            <td><%= e.title %></td>
+            <td><%= e.content %></td>
+            
+            <td><%= link_to "Accesar", course_evaluation_path(@course,e) , class: "btn btn-primary" %></td>
+            <% if tutor_user || admin %>
+            
+            <td><%= link_to "Editar", edit_course_evaluation_path(@course,e) , class: "btn btn-primary" %></td>
+            <td><%= button_to "Delete",  course_evaluation_path(@course,e) , method: :delete, class: "btn btn-danger" %></td>
+            
+            <% end %>
+         </tr>
+         
+      <% end %>
+   </tbody>
+   
+</table>
+<table class = "table table-bordered table-striped">
+    
+<h3>Practicos</h3>
+   <thead>
+      <tr>
+         <th>Nombre</th>
+
+         <th>Contenido</th>
+         
+
+         
+      </tr>
+   </thead>
+   
+   <tbody>
+      <% @practices.each do |e| %>
+         
+         <tr>
+            <td><%= e.title %></td>
+            <td><%= e.content %></td>
+            
+            <td><%= link_to "Accesar", course_practice_path(@course,e) , class: "btn btn-primary" %></td>
+            <% if tutor_user || admin %>
+            
+            <td><%= link_to "Editar", edit_course_practice_path(@course,e) , class: "btn btn-primary" %></td>
+            <td><%= button_to "Delete",  course_practice_path(@course,e) , method: :delete, class: "btn btn-danger" %></td>
+            
+            <% end %>
+         </tr>
+         
+      <% end %>
+   </tbody>
+   
+</table>
+
+<table class = "table table-bordered table-striped">
+
+<h3>Materiales de curso</h3>
+   <thead>
+      <tr>
+         <th>Nombre</th>
+
+         <th>Contenido</th>
+
+
+         
+      </tr>
+   </thead>
+   
+   <tbody>
+      <% @materials.each do |e| %>
+         
+         <tr>
+            <td><%= e.title %></td>
+            <td><%= e.content %></td>
+            
+            <td><%= link_to "accesar", course_material_path(@course,e) , class: "btn btn-primary" %></td>
+            <% if tutor_user || admin %>
+            <td><%= link_to "Editar", edit_course_material_path(@course,e) , class: "btn btn-primary" %></td>
+            <td><%= button_to "Delete",  course_material_path(@course,e) , method: :delete, class: "btn btn-danger" %></td>
+            <% end %>
+         </tr>
+         
+      <% end %>
+   </tbody>
+   
+</table>
+
+ <td><%= link_to "Cursos",program_courses_path(@course.program) , class: "btn btn-primary" %></td>

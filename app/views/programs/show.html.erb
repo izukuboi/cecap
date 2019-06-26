@@ -4,8 +4,12 @@
 </p>
  
 <p>
-  <strong># Modulos:</strong>
-  <%= @program.NumModulo %>
+  <strong># Cursos:</strong>
+  
+  <%= Course.where(program_id: @program.id).count %>
+  <% if tutor_user || subscribed || admin %>
+  <%= link_to 'Cursos', program_courses_path(@program) %>
+  <% end %>
 </p>
 
 <p>
@@ -13,12 +17,15 @@
   <%= @program.description %>
 </p>
 
-<p>
-  <strong>Tutor:</strong>
-  <%=@program.tutor.user.nombre %>
-  <%= link_to 'asignar', programs_tutor_path(@program) %>
-  
-</p>
+
+
+
+<% if student_user && !subscribed %>
+
+<%= link_to 'Subscribirse', program_subscribe_path(@program) %><br>
  
-<%= link_to 'Index', programs_path %>
-<td><%= link_to 'Inicio', inicio_index_path %></td><br>
+<% end%>
+<%= link_to 'Index', programs_path %><br>
+<td><%= link_to 'Inicio', root_path %></td><br>
+
+

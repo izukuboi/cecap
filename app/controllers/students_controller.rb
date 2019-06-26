@@ -7,7 +7,8 @@ class StudentsController < ApplicationController
         
     end
     def edit
-        @student = Student.joins(:user).where('user_id = params[:id]').model
+        #@student = Student.joins(:user).where('user_id = params[:id]').model
+        @student = Student.where(user_id: params[:id]).take
     end
     def create
         @student = Student.new()
@@ -41,7 +42,8 @@ class StudentsController < ApplicationController
     end
     
     def show
-        @student = Student.joins(:user).where('user_id = session[:user_id]')
+        #@student = Student.joins(:user).where('user_id = session[:user_id]')
+        @student = Student.where(user_id: session[:user_id]).take
     end
     
     private

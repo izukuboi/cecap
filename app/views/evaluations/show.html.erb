@@ -1,0 +1,24 @@
+
+
+<div class = "container">
+
+   
+
+
+
+            <strong>Titulo:</strong>
+            <td><%= @evaluation.title %> </td><br>
+            <strong>Contenido:</strong>
+            <td><%= @evaluation.content %> </td><br>
+            
+            <td><%= link_to "Download", @evaluation.attachment_url %></td><br>
+            
+            <td><%= link_to "Submit Evaluation", new_evaluation_grade_evaluation_path(@evaluation) %></td><br>
+            
+            <td><%= link_to "Courses show", course_path(@course)   %></td>
+         
+         
+      
+   
+   
+</div>

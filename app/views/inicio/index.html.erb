@@ -1,17 +1,35 @@
 <div class="body">
     <h2> Inicio </h2>
-    <%= link_to 'Registrar tutor', new_tutor_path %><br>
     
-    <%= link_to 'Registrar Estudiante', new_student_path %><br>
+
+     <% if current_user %>
+    <%= link_to 'Programas', programs_path %><br>
     
-    <%= link_to 'Gestionar Programa', programs_path %><br>
+
+    <%= link_to 'logout', logout_path%> <br>
     
-    <%= link_to 'Login', login_path %><br>
+  
+      <%if tutor_user %>
+        <%= link_to 'perfil tutor' , tutor_path(current_user)%><br>
+      <% elsif student_user %>
+        <%= link_to 'perfil estudiante', student_path(current_user)%><br>
+      <% end %>
+    <% else%>
+      <%= link_to 'Registrar tutor', new_tutor_path %><br>
     
-    <%= link_to 'perfil tutor' , tutor_path(current_user)%><br>
+      <%= link_to 'Registrar Estudiante', new_student_path %><br>
+      <%= link_to 'Login', login_path %><br>
+    <% end %>
+    
+
 
   <tr>
-     <h2> Programas </h2>
+    <% if current_user != admin %>
+    
+     <h2>Programas </h2>
+    <% else %>
+    <h2> Programas </h2>
+    <% end%>
     <th>NombrePrograma</th><br>
 
     <th></th>
@@ -19,8 +37,8 @@
  
   <% @programs.each do |prog| %>
     <tr>
-      <td><%= prog.nombrePrograma %></td>
-      <td><%= link_to 'Show', program_path(prog) %></td><br>
+      
+      <td><%= link_to prog.nombrePrograma, program_path(prog) %></td><br>
       
     </tr>
   <% end %>

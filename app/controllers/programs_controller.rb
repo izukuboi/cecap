@@ -1,5 +1,6 @@
 class ProgramsController < ApplicationController
-    before_action :require_admin, only: [:edit, :index]
+    before_action :require_admin, only: [:edit]
+
     
     def index
         @programs = Program.all    
@@ -13,6 +14,8 @@ class ProgramsController < ApplicationController
         @program =  Program.new()
     end
     def create
+        debugger
+        
         @program = Program.new(program_params)
         
         if @program.save()
@@ -39,6 +42,28 @@ class ProgramsController < ApplicationController
         @program.destroy
  
         redirect_to programs_path
+    end
+    def subscribe
+        @program = Program.find(params[:program_id])
+        @user = User.find(session[:user_id])
+        @student = Student.where(user_id: @user.id).take
+        
+        if @program.students.where(id: @student.id).take == nil
+            #@program.students.find(@student.id) == nil
+            #debugger
+            @program.students << @student
+            #@student.programs << @program
+            
+            @program.save
+            redirect_to program_path(@program) , notice: "Subscripcion exitosa"
+        else
+            #debugger
+            #flash.now[:alert] = "Ya estas subscrito"
+            redirect_to @program, danger: "Ya estas subscrito"
+        end
+        
+    
+        
     end
     
     private

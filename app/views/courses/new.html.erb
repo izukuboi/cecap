@@ -1,0 +1,21 @@
+<h1>Courses#new</h1>
+
+
+<div class = "well">
+   <%= form_with url: program_courses_path, html: { multipart: true } do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.label :description %>
+      <%= f.text_field :descripton %><br>
+              <% @tutors.each do |t| %>
+                <tr>
+                  <td><%= t.user.nombre %></td>
+                  <%= check_box_tag(:tutor_id,t.id) %><br>
+                  
+                  
+                  
+                </tr>
+              <% end %>
+      <%= f.submit "Save", class: "btn btn-primary" %>
+   <% end %>
+</div>

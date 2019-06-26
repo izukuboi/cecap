@@ -1,0 +1,12 @@
+    <%= form_for(@evaluation, url: course_evaluation_path(),html: { multipart: true }  )  do |f| %>
+    
+
+      <%= f.text_field :title, :placeholder => "Titulo" %><br>
+      <%= f.text_field :content, :placeholder => "Contenido" %><br>
+      <%= f.label :attachment %><br>
+      <%= f.file_field :attachment %><br>
+      
+
+      <%= f.submit "Editar", class: "btn-submit" %>
+    <% end %>
+    <td><%= link_to "Courses show", course_path(@evaluation.course)   %></td>

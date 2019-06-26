@@ -10,16 +10,71 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_02_032831) do
+ActiveRecord::Schema.define(version: 2019_06_26_194045) do
 
   create_table "courses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "descripton"
-    t.string "videolink"
     t.bigint "program_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "tutor_id"
     t.index ["program_id"], name: "index_courses_on_program_id"
+    t.index ["tutor_id"], name: "index_courses_on_tutor_id"
+  end
+
+  create_table "evaluations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.string "attachment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "course_id"
+    t.index ["course_id"], name: "index_evaluations_on_course_id"
+  end
+
+  create_table "grade_evaluations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "grade"
+    t.string "attachment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "grade_practices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "grade"
+    t.string "attachment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "materials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.string "attachment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "course_id"
+    t.index ["course_id"], name: "index_materials_on_course_id"
+  end
+
+  create_table "payments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "program_id"
+    t.bigint "student_id"
+    t.integer "fee"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["program_id"], name: "index_payments_on_program_id"
+    t.index ["student_id"], name: "index_payments_on_student_id"
+  end
+
+  create_table "practices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.string "attachment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "course_id"
+    t.index ["course_id"], name: "index_practices_on_course_id"
   end
 
   create_table "programs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -28,8 +83,6 @@ ActiveRecord::Schema.define(version: 2019_04_02_032831) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "description"
-    t.bigint "tutor_id"
-    t.index ["tutor_id"], name: "index_programs_on_tutor_id"
   end
 
   create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -58,6 +111,9 @@ ActiveRecord::Schema.define(version: 2019_04_02_032831) do
   end
 
   add_foreign_key "courses", "programs"
+  add_foreign_key "evaluations", "courses"
+  add_foreign_key "materials", "courses"
+  add_foreign_key "practices", "courses"
   add_foreign_key "students", "users"
   add_foreign_key "tutors", "users"
 end

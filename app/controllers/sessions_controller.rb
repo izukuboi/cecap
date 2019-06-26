@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
     end
     
     def create
+      #debugger
       @user = User.find_by_email(params[:session][:email])
       if @user && @user.authenticate(params[:session][:password])
           
@@ -10,20 +11,21 @@ class SessionsController < ApplicationController
         
         if Student.find_by(:user_id => @user.id) != nil
             
-           @algo = Student.where('user_id = @user.id')
+           @algo = Student.where(user_id: @user.id).take
            redirect_to student_path(@algo)
         else
             
-           @algo =Tutor.where('user_id = @user.id')
+           @algo =Tutor.where(user_id: @user.id).take
             redirect_to tutor_path(@algo)    
             
         end
       else
-        redirect_to 'login'
+        redirect_to '/login'
       end 
     end
     
     def destroy 
+      #debugger
     session[:user_id] = nil 
     redirect_to '/' 
     end

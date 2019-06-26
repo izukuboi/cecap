@@ -1,4 +1,4 @@
 class Tutor < ApplicationRecord
   belongs_to :user
-  has_many :programs
+  has_many :courses
 end
