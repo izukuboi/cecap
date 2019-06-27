@@ -70,6 +70,6 @@ class ProgramsController < ApplicationController
     
     private
         def program_params
-            params.require(:program).permit(:nombrePrograma,:NumModulo,:description)
+            params.require(:program).permit(:nombrePrograma,:NumModulo,:description, :amount)
         end  
 end
