@@ -29,6 +29,4 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-
-/psoftware_development
-/psoftware_test
+/public/uploads/*
