@@ -21,26 +21,31 @@
       <%= link_to 'Login', login_path %><br>
     <% end %>
     
+<h2> Programas </h2>
+<table class = "table table-bordered table-striped">
+  
+<thead>
+      <tr>
+         <th>Nombre</th>
 
-
-  <tr>
-    <% if current_user != admin %>
-    
-     <h2>Programas </h2>
-    <% else %>
-    <h2> Programas </h2>
-    <% end%>
-    <th>NombrePrograma</th><br>
-
-    <th></th>
-  </tr>
- 
+         <th>Description</th>
+         
+         <th>Modulos</th>
+        <th> </th>
+      </tr>
+   </thead>
+   
+<tbody>   
   <% @programs.each do |prog| %>
-    <tr>
-      
-      <td><%= link_to prog.nombrePrograma, program_path(prog) %></td><br>
-      
-    </tr>
+  <tr>
+            <td><%= link_to prog.nombrePrograma, program_path(prog) %></td>
+            <td><%= prog.description %></td>
+            <td><%= prog.NumModulo %></td>
+            
+            
+         </tr>
   <% end %>
+</tbody>
+    
 </table>
 </div>

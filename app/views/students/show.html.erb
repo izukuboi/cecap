@@ -20,6 +20,42 @@
          <td><%= link_to 'Inicio', root_path %></td><br>
 
   </ul> 
+  
+    <strong> Mis Programas </strong>
+  
+  <table class = "table table-bordered table-striped">
+   <thead>
+      <tr>
+         <th>Nombre</th>
+
+         <th>Description</th>
+         
+         <th>Modulos</th>
+         
+         <th>Acceso</th>
+
+         <th> </th>
+      </tr>
+   </thead>
+   
+   <tbody>
+  <% student_user.programs.each do |program| %>
+  
+   <tr>
+            <td><%= program.nombrePrograma %></td>
+            <td><%= program.description %></td>
+            <td><%= program.NumModulo %></td>
+            
+            <td><%= link_to "Programa", program, class: "btn btn-primary" %></td>
+
+           
+         </tr>
+  <% end %>
+  
+  <tbody/>
+  
+  </table>
+  
 <% else %> 
   <ul> 
   <h1> Acceso Denegado</h1>
