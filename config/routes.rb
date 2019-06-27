@@ -18,11 +18,11 @@ Rails.application.routes.draw do
 
   #resources :grade_evaluations, only: [:show, :new, :create]
   resources :evaluations do
-    resources :grade_evaluations, only: [:show, :new, :create]
+    resources :grade_evaluations, only: [:show, :new, :create, :edit, :update]
   end
   
   resources :practices do
-    resources :grade_practices, only: [:show, :new, :create]
+    resources :grade_practices, only: [:show, :new, :create, :edit, :update]
   end
 
   resources :programs do
