@@ -7,7 +7,7 @@ class EvaluationsController < ApplicationController
     end
     
     def create
-        debugger
+        #debugger
         @evaluation = Evaluation.new(evaluation_params)
         @course = Course.find(params[:course_id])
         if @evaluation.save
