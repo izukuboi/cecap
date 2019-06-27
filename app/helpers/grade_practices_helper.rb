@@ -1,0 +1,2 @@
+module GradePracticesHelper
+end

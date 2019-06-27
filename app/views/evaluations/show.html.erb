@@ -40,9 +40,10 @@
                
             
            
-                
+            <% if @gradenota != nil %>    
             <td><%= link_to "Estado Evaluacion", evaluation_grade_evaluation_path(@evaluation,@gradenota)   %></td><br>
+            <% end %>
             <td><%= link_to "Courses show", course_path(@course)   %></td>
             
-            </div>
+</div>
             

@@ -20,6 +20,10 @@ Rails.application.routes.draw do
   resources :evaluations do
     resources :grade_evaluations, only: [:show, :new, :create]
   end
+  
+  resources :practices do
+    resources :grade_practices, only: [:show, :new, :create]
+  end
 
   resources :programs do
     resources :courses

@@ -20,9 +20,11 @@ class PracticesController < ApplicationController
     end
     
     def show
-        
+        #debugger
         @practice = Practice.find(params[:id])
         @course = Course.find(params[:course_id])
+        @grade = GradePractice.new
+        @gradenota = student_user.grade_practices.where(:practice_id => @practice.id, :student_id => student_user.id).last
     end
     
     def update
