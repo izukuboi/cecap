@@ -24,7 +24,8 @@ class PracticesController < ApplicationController
         @practice = Practice.find(params[:id])
         @course = Course.find(params[:course_id])
         @grade = GradePractice.new
-        @gradenota = student_user.grade_practices.where(:practice_id => @practice.id, :student_id => student_user.id).last
+        @gradenota = GradePractice.where(:practice_id => @practice.id).last
+        #@gradenota = student_user.grade_practices.where(:practice_id => @practice.id, :student_id => student_user.id).last
     end
     
     def update

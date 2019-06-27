@@ -3,8 +3,12 @@ class GradeEvaluationsController < ApplicationController
         @grade = GradeEvaluation.new
         
     end
+    def edit
+        #debugger
+        @grade = GradeEvaluation.find(params[:id])
+    end
     def create
-        debugger
+        #debugger
         @grade = GradeEvaluation.new(grade_evaluation_params)
         @student = student_user
         @evaluation = Evaluation.find(params[:evaluation_id])
@@ -29,6 +33,20 @@ class GradeEvaluationsController < ApplicationController
     
     @grade = GradeEvaluation.find(params[:id])
     @evaluation = Evaluation.find(params[:evaluation_id])
+    
+        
+    end
+
+    def update
+        
+        @grade = GradeEvaluation.find(params[:id])
+        @evaluation = Evaluation.find(params[:evaluation_id])
+        #debugger
+        if @grade.update(ugrade_evaluation_params)
+            redirect_to evaluation_grade_evaluation_path(@evaluation,@grade)
+        else
+            render edit_evaluation_grade_evaluation_path(@evaluation,@grade)
+        end
         
     end
 
@@ -37,4 +55,9 @@ class GradeEvaluationsController < ApplicationController
         params.require(:grade_evaluation).permit(:attachment)   
         #params.require(:gradepermit(:attachment)
     end  
+    
+    def ugrade_evaluation_params
+        params.require(:grade_evaluation).permit(:grade) 
+        
+    end
 end

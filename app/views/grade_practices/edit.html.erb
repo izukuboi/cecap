@@ -1,0 +1,10 @@
+    <%= form_for(@grade, url: practice_grade_practice_path(),html: { multipart: true }  )  do |f| %>
+    
+
+      <%= f.text_field :grade, :placeholder => "Nota" %><br>
+     
+
+      
+
+      <%= f.submit "Editar", class: "btn-submit" %>
+    <% end %>

@@ -13,7 +13,9 @@
 
             
             <td><%= link_to "Download", @grade.attachment_url %></td><br>
-            
+            <% if tutor_user %>
+            <td><%= link_to "Calificar", edit_practice_grade_practice_path(@practice,@grade) %></td><br>
+            <% end %>
 
             
             <td><%= link_to "Practice", course_practice_path(@practice.course,@practice)   %></td>

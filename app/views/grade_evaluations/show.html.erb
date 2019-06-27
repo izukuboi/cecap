@@ -15,7 +15,9 @@
 
             
             <td><%= link_to "Download", @grade.attachment_url %></td><br>
-            
+            <% if tutor_user %>
+            <td><%= link_to "Calificar", edit_evaluation_grade_evaluation_path(@evaluation,@grade) %></td><br>
+            <% end %>
 
             
             <td><%= link_to "Evaluation", course_evaluation_path(@evaluation.course,@evaluation)   %></td>

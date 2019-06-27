@@ -3,6 +3,12 @@ class GradePracticesController < ApplicationController
         @grade = GradePractice.new
         
     end
+    
+    def edit
+        #debugger
+        @grade = GradePractice.find(params[:id])
+    end
+    
     def create
         #debugger
         @grade = GradePractice.new(grade_evaluation_params)
@@ -27,9 +33,23 @@ class GradePracticesController < ApplicationController
     
     def show
     
-    @grade = GradePractice.find(params[:id])
-    @practice = Practice.find(params[:practice_id])
+        @grade = GradePractice.find(params[:id])
+        @practice = Practice.find(params[:practice_id])
     
+        
+    end
+    
+    
+    def update
+        debugger
+        @grade = GradePractice.find(params[:id])
+        @practice = Practice.find(params[:practice_id])
+        #debugger
+        if @grade.update(ugrade_evaluation_params)
+            redirect_to practice_grade_practice_path(@practice,@grade)
+        else
+            render edit_practice_grade_practice_path(@pracice,@grade)
+        end
         
     end
 
@@ -38,4 +58,9 @@ class GradePracticesController < ApplicationController
         params.require(:grade_practice).permit(:attachment)   
         #params.require(:gradepermit(:attachment)
     end  
+    
+    def ugrade_evaluation_params
+        params.require(:grade_practice).permit(:grade) 
+        
+    end
 end
