@@ -110,5 +110,50 @@
    </tbody>
    
 </table>
+<% if student_user %>
+<h3> Mis Notas del Curso </h3>
+ <table class = "table table-bordered table-striped">
+   <thead>
+      <tr>
+         <th>Tipo</th>
+
+         <th>Nota</th>
+         
+
+
+         <th> </th>
+      </tr>
+   </thead>
+   
+   <tbody>
+  <% student_user.grade_evaluations.each do |st| %>
+  
+   <tr>
+            <td><%= st.evaluation.title %></td>
+            <td><%= st.grade %></td>
+            
+            
+            
+
+           
+         </tr>
+  <% end %>
+    <% student_user.grade_practices.each do |st| %>
+  
+   <tr>
+            <td><%= st.practice.title %></td>
+            <td><%= st.grade %></td>
+            
+            
+            
+
+           
+         </tr>
+  <% end %>
+  
+  <tbody/>
+  
+  </table>
+  <% end %>
 
  <td><%= link_to "Cursos",program_courses_path(@course.program) , class: "btn btn-primary" %></td>

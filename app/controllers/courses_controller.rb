@@ -27,11 +27,13 @@ class CoursesController < ApplicationController
     end
   end
   def show
+    debugger
     
     @course = Course.find(params[:id])
     @evaluations = @course.evaluations
     @practices = @course.practices
     @materials = @course.materials
+    
     #@lala = @evaluations.where(evatype: "exam").or(@evaluations.where(evatype: "practice"))
     #@exams = Evaluation.where(evatype: "exam")
     #practice = Evaluation.where(evatype: "practice")
