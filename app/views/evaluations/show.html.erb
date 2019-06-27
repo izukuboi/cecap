@@ -12,37 +12,20 @@
             <td><%= @evaluation.content %> </td><br>
             
             <td><%= link_to "Download", @evaluation.attachment_url %></td><br>
-         
-         
+             <% if student_user %>
+            <td><%= link_to "Subir archivo para revision", new_evaluation_grade_evaluation_path(@evaluation)   %></td><br>
+            <td><%= link_to "Nota", evaluation_grade_evaluation_path(@evaluation,@gradenota)   %></td><br>
+            <% end%>
+            <% if tutor_user %>
+            <td><%= link_to "Lista de alumnos con archivos enviados", evaluation_grade_evaluations_path(@evaluation)   %></td><br>
+            <% end %>
       
    
    
-</div>
 
 
-            <div class = "container">
-                <% if @gradenota != nil %>
-                <p>Archivo subido, puede resubir si es necesario</p>
-                <%else %>
-               <p>Subir archivo para ser revisado</p>
-               <% end %>
-               <%= form_for(@grade, url: evaluation_grade_evaluations_path(@evaluation),html: { multipart: true } ) do |f| %>
-               
-              
-            
-            
-            
-            
-                  <%= f.label :attachment %><br>
-                  <%= f.file_field :attachment %><br>
-                  <%= f.submit "Enviar", class: "btn btn-primary" %>
-               <% end %>
-               
-            
-           
-            <% if @gradenota != nil %>    
-            <td><%= link_to "Estado Evaluacion", evaluation_grade_evaluation_path(@evaluation,@gradenota)   %></td><br>
-            <% end %>
+
+
             <td><%= link_to "Courses show", course_path(@course)   %></td>
             
 </div>

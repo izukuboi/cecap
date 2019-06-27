@@ -20,12 +20,19 @@ class EvaluationsController < ApplicationController
     end
     
     def show
-        debugger
+        
+        #debugger
         @evaluation = Evaluation.find(params[:id])
+        if student_user
+            @gradenota = GradeEvaluation.where(:evaluation_id => @evaluation.id, :student_id => student_user.id).take
+        end
+        
         @course = Course.find(params[:course_id])
-        @grade = GradeEvaluation.new
-        @programa = @course.program
-        @gradenota = GradeEvaluation.where(:evaluation_id => @evaluation.id).last
+        
+
+        #@grade = GradeEvaluation.new
+        #@programa = @course.program
+        #
         #@gradenota = student_user.grade_evaluations.where(:evaluation_id => @evaluation.id, :student_id => student_user.id).last
         #@nais = User.all
         

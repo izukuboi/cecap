@@ -1,4 +1,14 @@
 class GradePracticesController < ApplicationController
+    
+    
+    def index
+        debugger
+        @grade = GradePractice.all
+        @practice = Practice.find(params[:practice_id])
+        
+    end
+
+    
     def new
         @grade = GradePractice.new
         
@@ -41,7 +51,7 @@ class GradePracticesController < ApplicationController
     
     
     def update
-        debugger
+        
         @grade = GradePractice.find(params[:id])
         @practice = Practice.find(params[:practice_id])
         #debugger

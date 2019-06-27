@@ -15,39 +15,22 @@
             
 
             
-            <td><%= link_to "Courses show", course_path(@course)   %></td>
+             <% if student_user %>
+            <td><%= link_to "Subir archivo para revision", new_practice_grade_practice_path(@practice)   %></td><br>
+            <td><%= link_to "Nota", practice_grade_practice_path(@practice,@gradenota)   %></td><br>
+            <% end%>
+            <% if tutor_user %>
+            <td><%= link_to "Lista de alumnos con archivos enviados", practice_grade_practices_path(@practice)   %></td><br>
+            <% end %>
          
          
       
    
    
-</div>
-</div>
 
 
-            <div class = "container">
-                <% if @gradenota != nil %>
-                <p>Archivo subido, puede resubir si es necesario</p>
-                <%else %>
-               <p>Subir archivo para ser revisado</p>
-               <% end %>
-               <%= form_for(@grade, url: practice_grade_practices_path(@practice),html: { multipart: true } ) do |f| %>
-               
-              
-            
-            
-            
-            
-                  <%= f.label :attachment %><br>
-                  <%= f.file_field :attachment %><br>
-                  <%= f.submit "Enviar", class: "btn btn-primary" %>
-               <% end %>
-               
-            
-           
-            <% if @gradenota != nil    %>
-            <td><%= link_to "Estado Practico", practice_grade_practice_path(@practice,@gradenota)   %></td><br>
-            <% end%>
+
+
             <td><%= link_to "Courses show", course_path(@course)   %></td>
             
 </div>

@@ -1,4 +1,11 @@
 class GradeEvaluationsController < ApplicationController
+    
+    def index
+        @grade = GradeEvaluation.all
+        @evaluation = Evaluation.find(params[:evaluation_id])
+        
+    end
+    
     def new
         @grade = GradeEvaluation.new
         
