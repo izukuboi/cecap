@@ -27,7 +27,7 @@ class CoursesController < ApplicationController
     end
   end
   def show
-    debugger
+    
     
     @course = Course.find(params[:id])
     @evaluations = @course.evaluations
