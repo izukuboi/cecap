@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  #get 'courses_tutor/new'
   #get 'courses/index'
   #get 'courses/new'
   #get 'courses/create'

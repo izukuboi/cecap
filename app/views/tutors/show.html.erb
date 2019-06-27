@@ -20,6 +20,43 @@
          <td><%= link_to 'Inicio', root_path %></td><br>         
 
   </ul> 
+  <strong> Mis cursos </strong>
+  
+  <table class = "table table-bordered table-striped">
+   <thead>
+      <tr>
+         <th>Name</th>
+
+         <th>Description</th>
+         
+         
+         <th>Programa</th>
+         
+         <th>Acceso</th>
+
+         <th> </th>
+      </tr>
+   </thead>
+   
+   <tbody>
+  <% tutor_user.courses.each do |course| %>
+  
+   <tr>
+            <td><%= course.name %></td>
+            <td><%= course.descripton %></td>
+            <td><%= course.program.nombrePrograma %></td>
+            
+            <td><%= link_to "Curso", course, class: "btn btn-primary" %></td>
+            <% if tutor_user || admin %>
+            <td><%= button_to "Delete",  course, method: :delete, class: "btn btn-danger" %></td>
+            <% end %>
+           
+         </tr>
+  <% end %>
+  
+  <tbody/>
+  
+  </table>
   
 <% else %> 
   <ul> 
