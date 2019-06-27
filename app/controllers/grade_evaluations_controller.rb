@@ -8,11 +8,14 @@ class GradeEvaluationsController < ApplicationController
         @grade = GradeEvaluation.new(grade_evaluation_params)
         @student = student_user
         @evaluation = Evaluation.find(params[:evaluation_id])
+        @student.grade_evaluations << @grade
+        @grade.evaluation = @evaluation
         #@course = Course.find(params[:course_id])
+        
         if @grade.save
             #@course.evaluations << @evaluation
-            @grade.evaluation = @evaluation
-            @grade.student = @student
+            #@grade.evaluation = @evaluation
+            #@grade.student = @student
             
 
             redirect_to evaluation_grade_evaluation_path(@evaluation,@grade)
@@ -24,7 +27,7 @@ class GradeEvaluationsController < ApplicationController
 
     private 
     def grade_evaluation_params
-            
-        params.permit(:attachment)
+        params.require(:grade_evaluation).permit(:attachment)   
+        #params.require(:gradepermit(:attachment)
     end  
 end

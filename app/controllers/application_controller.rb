@@ -11,7 +11,9 @@ add_flash_types  :danger, :error
 
     def current_user 
         #debugger
-        @current_user ||= User.find(session[:user_id]) if session[:user_id] 
+        
+            @current_user ||= User.find(session[:user_id]) if session[:user_id]  
+        
     end
     
     def admin

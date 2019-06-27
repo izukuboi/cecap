@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_26_194045) do
+ActiveRecord::Schema.define(version: 2019_06_27_052933) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
@@ -38,6 +38,10 @@ ActiveRecord::Schema.define(version: 2019_06_26_194045) do
     t.string "attachment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "evaluation_id"
+    t.integer "student_id"
+    t.index ["evaluation_id"], name: "index_grade_evaluations_on_evaluation_id"
+    t.index ["student_id"], name: "index_grade_evaluations_on_student_id"
   end
 
   create_table "grade_practices", force: :cascade do |t|
@@ -45,6 +49,10 @@ ActiveRecord::Schema.define(version: 2019_06_26_194045) do
     t.string "attachment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "practice_id"
+    t.integer "student_id"
+    t.index ["practice_id"], name: "index_grade_practices_on_practice_id"
+    t.index ["student_id"], name: "index_grade_practices_on_student_id"
   end
 
   create_table "materials", force: :cascade do |t|
