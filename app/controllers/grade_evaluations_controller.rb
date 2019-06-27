@@ -24,6 +24,13 @@ class GradeEvaluationsController < ApplicationController
         end
         
     end
+    
+    def show
+    
+    @grade = GradeEvaluation.find(params[:id])
+    @evaluation = Evaluation.find(params[:evaluation_id])
+        
+    end
 
     private 
     def grade_evaluation_params
