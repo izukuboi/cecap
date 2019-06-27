@@ -64,7 +64,7 @@ Rails.application.routes.draw do
   get 'programs/:program_id/tutors/', to: 'programs_tutor#index', as: :programs_tutor
   post 'programs/:program_id/tutors/', to: 'programs_tutor#create'
  
-  get 'logout' => 'sessions#destroy'
+  get '/logout' => 'sessions#destroy'
   
 
   #resources :courses, only: [:index, :new, :create, :destroy]

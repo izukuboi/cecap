@@ -50,10 +50,14 @@ class ProgramsController < ApplicationController
         @user = User.find(session[:user_id])
         @student = Student.where(user_id: @user.id).take
         
+        
         if @program.students.where(id: @student.id).take == nil
             #@program.students.find(@student.id) == nil
-            #debugger
+            debugger
             @program.students << @student
+            @pago = @program.payments.where(:student_id  => @student.id).take
+            @pago.fee = @program.amount
+            @pago.save
             #@student.programs << @program
             
             @program.save
