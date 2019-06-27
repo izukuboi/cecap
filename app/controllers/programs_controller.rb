@@ -14,7 +14,9 @@ class ProgramsController < ApplicationController
         @program =  Program.new()
     end
     def create
+
         #debugger
+
         
         @program = Program.new(program_params)
         

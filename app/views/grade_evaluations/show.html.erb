@@ -1,0 +1,27 @@
+
+
+<div class = "container">
+
+   
+
+
+
+            <strong>Nota:</strong>
+            <% if @grade.grade == nil %>
+             <td>No calificado</td><br>
+             <% else %>
+            <td><%= @grade.grade %> </td><br>
+            <% end %>
+
+            
+            <td><%= link_to "Download", @grade.attachment_url %></td><br>
+            
+
+            
+            <td><%= link_to "Evaluation", course_evaluation_path(@evaluation.course,@evaluation)   %></td>
+         
+         
+      
+   
+   
+</div>
